@@ -11,9 +11,9 @@ class AddFriend extends Component {
         this.props.addFriend({name: name.value, age: age.value, email: email.value});
         name.value = age.value = email.value = '';
       }}>
-        <input ref={node => name = node } type='text' placeholder='name here...'></input>
-        <input ref={node => age = node } type='text' placeholder='age here...'></input>
-        <input ref={node => email = node } type='text' placeholder='email here...'></input>
+        <input ref={node => name = node } placeholder='name here...'></input>
+        <input ref={node => age = node } placeholder='age here...'></input>
+        <input ref={node => email = node } placeholder='email here...'></input>
         <button type='submit'>submit</button>
       </form>
     );

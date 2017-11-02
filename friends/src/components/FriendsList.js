@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFriends } from '../actions';
+import { getFriends, deleteFriend } from '../actions';
 
 class FriendsList extends Component {
   componentDidMount() {
@@ -10,9 +10,15 @@ class FriendsList extends Component {
     return (
       <div>
         {this.props.friends.map((friend, i) => {
-          return Object.keys(friend).map((key, i) => {
-            return <p key={i}>{`${key}: ${friend[key]}`}</p>
-          });
+          console.log(friend.name);
+          return (
+            <p key={'p'+i}> 
+              <button onClick={() => { this.props.deleteFriend(i) }}>Delete</button> 
+              {Object.keys(friend).map((key, i) => {
+                return <span style={{marginLeft: 4+'px'}} key={i}>{`${key}: ${friend[key]}`}</span>
+              })}
+            </p>
+          );
         })}
       </div>
     );
@@ -25,4 +31,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getFriends })(FriendsList);
+export default connect(mapStateToProps, { getFriends, deleteFriend })(FriendsList);

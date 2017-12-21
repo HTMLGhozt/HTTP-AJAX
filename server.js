@@ -46,10 +46,7 @@ app.post('/new-friend', (req, res) => {
 });
 
 app.put('/update-friend', (req, res) => {
-	console.log(req.body);
 	const index = req.body.index;
-	console.log(index);
-	console.log(friends[index]);
 	friends[index] = req.body.update;
 	res.send(friends);
 });

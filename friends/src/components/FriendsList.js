@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFriends, deleteFriend, editFriend } from '../actions';
-import Form from './Form'
+import Form from './UpdateFriend'
 
 class FriendsList extends Component {
   constructor(props) {
@@ -19,11 +19,12 @@ class FriendsList extends Component {
       <div>
         {this.props.friends.map((friend, i) => {
           return (
-            <div key={'p' + i}> 
+            <div key={i}> 
               <button onClick={() => { this.setState({ update: !this.state.update, id: i, }) }}>Update</button>
               <button onClick={() => { this.props.deleteFriend(i) }}>Delete</button>
-              {Object.keys(friend).map((key, i) => {
-                return <span style={{marginLeft: 4+'px'}} key={i}>{`${key}: ${friend[key]}`}</span>
+
+              {Object.keys(friend).map((key) => {
+                return <span style={{marginLeft: 4+'px'}} key={key + i}>{`${key}: ${friend[key]}`}</span>
               })}
             </div>
           );
